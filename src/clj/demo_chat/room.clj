@@ -1,13 +1,15 @@
 (ns demo-chat.room)
 
-(defn new [] {})
+(defn new [] {::receivers {} ::history []})
 
 (defn send [room message]
-  (doseq [kv room]
-    ((second kv) message)))
+  (let [updated (update room ::history conj message)]
+    (doseq [kv (::receivers room)]
+      ((second kv) message))
+    updated))
 
 (defn join [room id receiver]
-  (assoc room id receiver))
+  (assoc-in room [::receivers id] receiver))
 
 (defn leave [room id]
-  (dissoc room id))
+  (update room ::receivers dissoc id))
