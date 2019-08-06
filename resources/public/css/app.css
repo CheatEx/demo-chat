@@ -63,6 +63,8 @@ div:hover {
 /**********************************/
 .chat {
     flex-direction: column;
+    width: 80%;
+    max-width: 800px;
 }
 
 .chat__header {
@@ -83,12 +85,26 @@ div:hover {
 /**********************************/
 .history-item {
     flex-direction: row;
+    align-self: flex-end;
+}
+
+.history-item_own {
+    flex-direction: row-reverse;
+    align-self: flex-start;
+}
+
+.history-item__separator {
+    margin: 0px, 3px, 0px, 3px;
 }
 
 
 /**********************************/
 .message-input {
     flex-direction: row;
+}
+
+.message-input__input {
+    flex-grow: 1;
 }
 
 .message-input__send {

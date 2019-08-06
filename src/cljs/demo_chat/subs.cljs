@@ -6,9 +6,13 @@
 (rf/reg-sub
  ::history
  (fn [db]
-   (::db/history db)))
+   (let [user (::db/user db)]
+     (->> (::db/history db)
+          (map #(assoc % ::own (= (::db/from %) user)))))))
 
 (rf/reg-sub
  ::user
  (fn [db]
    (::db/user db)))
+
+(->> @(rf/subscribe [::history]))
