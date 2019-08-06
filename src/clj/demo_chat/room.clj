@@ -1,10 +1,13 @@
 (ns demo-chat.room)
 
-(defn new [] [])
+(defn new [] {})
 
 (defn send [room message]
-  (doseq [r room]
-    (r message)))
+  (doseq [kv room]
+    ((second kv) message)))
 
-(defn join [room receiver]
-  (conj room receiver))
+(defn join [room id receiver]
+  (assoc room id receiver))
+
+(defn leave [room id]
+  (dissoc room id))

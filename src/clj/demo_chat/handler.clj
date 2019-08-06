@@ -18,10 +18,18 @@
   (receiver
    {::events/join
     (fn [tube [_ user]]
-      (swap! chat room/join (fn [message] (dispatch tx tube [::events/received message]))))
+      (swap! chat room/join user (fn [message] (dispatch tx tube [::events/received message])))
+      (assoc tube ::user user))
+    
     ::events/send
     (fn [tube [_ message]]
-      (room/send @chat message))}))
+      (room/send @chat message)
+      tube)
+    
+    :tube/on-destroy
+    (fn [tube _]
+      (swap! chat room/leave (::user tube))
+      tube)}))
 
 (def ws-handler (websocket-handler rx))
 

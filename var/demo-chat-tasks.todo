@@ -1,9 +1,10 @@
 Chat:
   ✔ Name selection @c @done (19-08-05 16:25)
-    ☐ Restrict allowed names
-  ☐ Room management
+    ☐ Restrict allowed names @c
+    ☐ Same name strategy @?
+  ✔ Room management @done (19-08-06 17:19)
     ✔ Join @s @done (19-08-06 12:02)
-    ☐ Disconnect @s
+    ✔ Disconnect @s @done (19-08-06 17:19)
   ✔ Send message @c @done (19-08-06 12:02)
   ✔ Message forwarding @s @done (19-08-06 12:02)
   ✔ Receive @c @done (19-08-06 12:02)
