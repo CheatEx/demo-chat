@@ -1,0 +1,11 @@
+Chat:
+  ✔ Name selection @c @done (19-08-05 16:25)
+    ☐ Restrict allowed names
+  ☐ Room management
+    ✔ Join @s @done (19-08-06 12:02)
+    ☐ Disconnect @s
+  ✔ Send message @c @done (19-08-06 12:02)
+  ✔ Message forwarding @s @done (19-08-06 12:02)
+  ✔ Receive @c @done (19-08-06 12:02)
+  ☐ Server side history @s
+    ☐ Send history on join @s

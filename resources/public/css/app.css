@@ -1,0 +1,103 @@
+body {
+    margin: 0px;
+    background-color: #F7F7F7;
+}
+
+div {
+    display: flex;
+}
+
+div, input {
+    font-size: 16px;
+	font-family: Arial,sans-serif;
+    color: #222;
+}
+
+div:hover {
+    cursor: default;
+}
+
+#app {
+    justify-content: center;
+}
+
+
+/**********************************/
+.login {
+    flex-direction: row;
+    margin: 12px;
+}
+
+.login__login-button {
+    flex-direction: row;
+    margin-left: 6px;
+    padding: 2px;
+    border: 1px solid #222;
+}
+
+.login__login-button span {
+    align-self: baseline;
+}
+
+
+/**********************************/
+.active-user {
+
+}
+
+.active-user__label {
+    margin-right: 6px;
+}
+
+
+/**********************************/
+.user-label {
+
+}
+
+.user-label__text {
+    font-weight: bold;
+}
+
+
+/**********************************/
+.chat {
+    flex-direction: column;
+}
+
+.chat__header {
+    flex-direction: row-reverse;
+    margin: 3px 0px 3px 0px;
+}
+
+.chat__body {
+    flex-direction: column;
+}
+
+/**********************************/
+.history {
+    flex-direction: column;
+}
+
+
+/**********************************/
+.history-item {
+    flex-direction: row;
+}
+
+
+/**********************************/
+.message-input {
+    flex-direction: row;
+}
+
+.message-input__send {
+    flex-direction: row;
+    margin-left: 6px;
+    padding: 2px;
+    border: 1px solid #222;
+}
+
+.message-input__send span {
+    align-self: baseline;
+}
