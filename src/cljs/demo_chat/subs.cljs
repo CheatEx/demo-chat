@@ -14,5 +14,3 @@
  ::user
  (fn [db]
    (::db/user db)))
-
-(->> @(rf/subscribe [::history]))

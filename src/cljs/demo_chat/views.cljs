@@ -31,17 +31,19 @@
     history)])
 
 (defn message-input []
-  (let [text (ra/atom "")]
+  (let [text (ra/atom "")
+        on-send (fn []
+                  (rf/dispatch [::events/send-message @text])
+                  (reset! text ""))]
     (fn [] [:div.message-input
             [:input.message-input__input
              {:type "Text"
               :value @text
               :tab-index 0
-              :on-change (fn [e] (reset! text (-> e .-target .-value)))}]
+              :on-change (fn [e] (reset! text (-> e .-target .-value)))
+              :on-key-down (fn [e] (when (= (.-key e) "Enter") (on-send)))}]
             [:div.message-input__send
-             {:on-click (fn [e]
-                          (rf/dispatch [::events/send-message @text])
-                          (reset! text ""))}
+             {:on-click (fn [e] (on-send))}
              [:span "Send"]]])))
 
 (defn chat []
