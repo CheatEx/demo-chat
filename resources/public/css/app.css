@@ -52,7 +52,11 @@ div:hover {
 
 /**********************************/
 .user-label {
+    color: darkblue;
+}
 
+.user-label.user-label_own {
+    color: darkgreen;
 }
 
 .user-label__text {
@@ -64,12 +68,12 @@ div:hover {
 .chat {
     flex-direction: column;
     width: 80%;
-    max-width: 800px;
+    max-width: 600px;
 }
 
 .chat__header {
     flex-direction: row-reverse;
-    margin: 3px 0px 3px 0px;
+    margin: 6px 0px 12px 0px;
 }
 
 .chat__body {
@@ -94,13 +98,18 @@ div:hover {
 }
 
 .history-item__separator {
-    margin: 0px, 3px, 0px, 3px;
+    margin: 0px 0px 0px 6px;
+}
+
+.history-item_own .history-item__separator {
+    margin: 0px 6px 0px 0px;
 }
 
 
 /**********************************/
 .message-input {
     flex-direction: row;
+    margin-top: 3px;
 }
 
 .message-input__input {

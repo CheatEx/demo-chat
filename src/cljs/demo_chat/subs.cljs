@@ -12,5 +12,4 @@
 
 (rf/reg-sub
  ::user
- (fn [db]
-   (::db/user db)))
+ (fn [db] (::db/user db)))

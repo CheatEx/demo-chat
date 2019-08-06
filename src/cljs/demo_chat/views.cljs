@@ -7,22 +7,23 @@
    [demo-chat.subs :as subs]
    [demo-chat.db :as db]))
 
-(defn user-label [user]
+(defn user-label [user me?]
   [:div.user-label 
+   {:class (when me? "user-label_own")}
    [:span.user-label__text (::db/name user)]])
 
 (defn active-user []
   (let [user (rf/subscribe [::subs/user])]
     [:div.active-user 
      [:span.active-user__label "Name: "] 
-     [user-label @user]]))
+     [user-label @user true]]))
 
 (defn history-item [msg]
   [:div.history-item
    {:class (when (::subs/own msg) "history-item_own")}
    [:span (::db/text msg)]
    [:span.history-item__separator ":"]
-   [user-label (::db/from msg)]])
+   [user-label (::db/from msg) (::subs/own msg)]])
 
 (defn history [history]
   [:div.history
