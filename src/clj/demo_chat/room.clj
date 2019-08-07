@@ -1,18 +1,25 @@
 (ns demo-chat.room
   (:require [demo-chat.events :as events]))
 
-(defn new [] {::receivers {} ::history []})
+(defn new [] (atom {::receivers {} ::history []}))
 
-(defn send [room message]
-  (let [updated (update room ::history conj message)]
-    (doseq [kv (::receivers room)]
-      ((second kv) [::events/received message]))
-    updated))
+(defn- join [room id receiver]
+  (assoc-in room [::receivers id] receiver))
 
-(defn join [room id receiver]
-  (let [updated (assoc-in room [::receivers id] receiver)]
-    (receiver [::events/history (::history room)])
-    updated))
-
-(defn leave [room id]
+(defn- leave [room id]
   (update room ::receivers dissoc id))
+
+(defn- send [room message]
+  (update room ::history conj message))
+
+(defn join! [room id receiver]
+  (swap! room join id receiver)
+  (receiver [::events/history (::history @room)]))
+
+(defn leave! [room id]
+  (swap! room leave id))
+
+(defn send! [room message]
+  (swap! room send message)
+  (doseq [kv (::receivers @room)]
+    ((second kv) [::events/received message])))

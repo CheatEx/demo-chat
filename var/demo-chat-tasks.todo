@@ -8,5 +8,5 @@ Chat:
   ✔ Send message @c @done (19-08-06 12:02)
   ✔ Message forwarding @s @done (19-08-06 12:02)
   ✔ Receive @c @done (19-08-06 12:02)
-  ☐ Server side history @s
-    ☐ Send history on join @s
+  ✔ Server side history @s @done (19-08-07 12:49)
+    ✔ Send history on join @s @done (19-08-07 12:49)

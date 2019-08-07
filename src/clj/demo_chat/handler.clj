@@ -12,23 +12,23 @@
 (def tx (transmitter))
 (def dispatch-to (partial dispatch tx))
 
-(defonce chat (atom (room/new)))
+(defonce chat (room/new))
 
 (def rx
   (receiver
    {::events/join
     (fn [tube [_ user]]
-      (swap! chat room/join user (fn [evt] (dispatch tx tube evt)))
+      (room/join! chat user (fn [evt] (dispatch tx tube evt)))
       (assoc tube ::user user))
     
     ::events/send
     (fn [tube [_ message]]
-      (swap! chat room/send message)
+      (room/send! chat message)
       tube)
     
     :tube/on-destroy
     (fn [tube _]
-      (swap! chat room/leave (::user tube))
+      (room/leave! chat (::user tube))
       tube)}))
 
 (def ws-handler (websocket-handler rx))
