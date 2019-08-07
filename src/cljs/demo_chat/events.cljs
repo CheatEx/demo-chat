@@ -21,3 +21,7 @@
 (rf/reg-event-db ::received
                  (fn [db [_ message]]
                    (update db ::db/history conj message)))
+
+(rf/reg-event-db ::history
+                 (fn [db [_ history]]
+                   (update db ::db/history into history)))

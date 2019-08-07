@@ -18,12 +18,12 @@
   (receiver
    {::events/join
     (fn [tube [_ user]]
-      (swap! chat room/join user (fn [message] (dispatch tx tube [::events/received message])))
+      (swap! chat room/join user (fn [evt] (dispatch tx tube evt)))
       (assoc tube ::user user))
     
     ::events/send
     (fn [tube [_ message]]
-      (room/send @chat message)
+      (swap! chat room/send message)
       tube)
     
     :tube/on-destroy
