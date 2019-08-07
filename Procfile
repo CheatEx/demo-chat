@@ -1,1 +1,1 @@
-web: java $JVM_OPTS -cp target/demo-chat.jar clojure.main -m demo-chat.server
+web: java $JVM_OPTS -jar target/demo-chat.jar

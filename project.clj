@@ -1,11 +1,13 @@
 (defproject demo-chat "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [org.clojure/clojurescript "1.10.520"]
+                 [org.clojure/core.async "0.4.500"]
                  [reagent "0.8.1"]
                  [re-frame "0.10.8"]
                  [compojure "1.6.1"]
                  [yogthos/config "1.1.2"]
                  [ring "1.7.1"]
+                 [http-kit "2.3.0"]
                  [pneumatic-tubes "0.3.0"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]]
@@ -24,7 +26,7 @@
   {:dev
    {:plugins      [[lein-figwheel "0.5.18"]
                    [lein-doo "0.1.8"]]}
-   :prod { }
+   :prod {}
    :uberjar {:source-paths ["env/prod/clj"]
              :omit-source  true
              :main         demo-chat.server
