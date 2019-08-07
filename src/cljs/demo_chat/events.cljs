@@ -25,3 +25,7 @@
 (rf/reg-event-db ::history
                  (fn [db [_ history]]
                    (update db ::db/history into history)))
+
+(rf/reg-event-db ::logged-out
+                 (fn [db _]
+                   (dissoc db ::db/user)))

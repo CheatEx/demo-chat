@@ -13,8 +13,10 @@
   (update room ::history conj message))
 
 (defn join! [room id receiver]
-  (swap! room join id receiver)
-  (receiver [::events/history (::history @room)]))
+  (let [[old new] (swap-vals! room join id receiver)]
+    (receiver [::events/history (::history @room)])
+    (when-let [old-receiver (get-in old [::receivers id])]
+      (old-receiver [::events/logged-out]))))
 
 (defn leave! [room id]
   (swap! room leave id))
