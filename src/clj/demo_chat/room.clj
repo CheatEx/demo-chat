@@ -1,4 +1,5 @@
 (ns demo-chat.room
+  (:refer-clojure :exclude [send])
   (:require [demo-chat.events :as events]))
 
 (defn new [] (atom {::receivers {} ::history []}))
