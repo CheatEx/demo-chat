@@ -1,5 +1,6 @@
 (ns demo-chat.views
   (:require
+   [clojure.string :as str]
    [reagent.core  :as ra]
    [re-frame.core :as rf]
    
@@ -54,19 +55,23 @@
      [:div.chat__body
       [history @hs] [message-input]]]))
 
+(defn valid-name? [name]
+  (<= (count name) 32))
+
 (defn login []
   (let [name (ra/atom "")]
     (fn []
-      [:div.login
-       [:input.login__name-input
-        {:type "Text"
-         :value @name
-         :tab-index 0
-         :on-change (fn [e] (reset! name (-> e .-target .-value)))}]
-       [:div.login__login-button
-        {:on-click (fn [e]
-                     (rf/dispatch [::events/logged-in {::db/name @name}]))}
-        [:span "Login"]]])))
+      (let [valid (valid-name? @name)]
+        [:div.login {:class (when-not valid "login_invalid")}
+         [:input.login__name-input
+          {:type "Text"
+           :value @name
+           :tab-index 0
+           :on-change (fn [e] (reset! name (-> e .-target .-value)))}]
+         [:div.login__login-button
+          (when valid
+            {:on-click (fn [e] (rf/dispatch [::events/logged-in {::db/name @name}]))})
+          [:span "Login"]]]))))
 
 (defn app []
   (let [user (rf/subscribe [::subs/user])]

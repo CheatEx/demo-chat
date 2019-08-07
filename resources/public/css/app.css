@@ -26,6 +26,12 @@ div:hover {
 .login {
     flex-direction: row;
     margin: 12px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.login__name-input {
+    flex-grow: 1;
 }
 
 .login__login-button {
@@ -39,6 +45,13 @@ div:hover {
     align-self: baseline;
 }
 
+.login_invalid .login__login-button {
+    color: #666;
+}
+
+.login_invalid .login__name-input {
+    color: lightcoral;
+}
 
 /**********************************/
 .active-user {
