@@ -1,7 +1,7 @@
 Chat:
   ✔ Name selection @c @done (19-08-05 16:25)
-    ☐ Restrict allowed names @c
-    ☐ Same name strategy @?
+    ✔ Restrict allowed names @c @done (19-08-07 19:22)
+    ✔ Same name strategy @? @done (19-08-07 19:22)
   ✔ Room management @done (19-08-06 17:19)
     ✔ Join @s @done (19-08-06 12:02)
     ✔ Disconnect @s @done (19-08-06 17:19)
@@ -10,3 +10,9 @@ Chat:
   ✔ Receive @c @done (19-08-06 12:02)
   ✔ Server side history @s @done (19-08-07 12:49)
     ✔ Send history on join @s @done (19-08-07 12:49)
+  ✔ Heroku run @done (19-08-07 19:22)
+  ☐ CI @?
+  ☐ Database
+    ☐ Options
+    ☐ Code
+    ☐ Heroku support
