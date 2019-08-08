@@ -2,7 +2,7 @@
   (:refer-clojure :exclude [send])
   (:require [demo-chat.events :as events]))
 
-(defn new [] (atom {::receivers {} ::history []}))
+(defn create-room [] (atom {::receivers {} ::history []}))
 
 (defn- join [room id receiver]
   (assoc-in room [::receivers id] receiver))

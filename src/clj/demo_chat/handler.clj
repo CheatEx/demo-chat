@@ -12,7 +12,7 @@
 (def tx (transmitter))
 (def dispatch-to (partial dispatch tx))
 
-(defonce chat (room/new))
+(defonce chat (room/create-room))
 
 (def rx
   (receiver
