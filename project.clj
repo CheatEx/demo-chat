@@ -16,6 +16,8 @@
 
   :source-paths ["src/clj" "src/cljc"]
 
+  :test-paths ["test/clj"]
+
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"
                                     "test/js"]
 
@@ -56,13 +58,5 @@
                     :output-to       "resources/public/js/compiled/app.js"
                     :optimizations   :advanced
                     :closure-defines {goog.DEBUG false}
-                    :pretty-print    false}}
-
-    {:id           "test"
-     :source-paths ["src/cljs" "test/cljs" "src/cljc"]
-     :compiler     {:main          demo-chat.runner
-                    :output-to     "resources/public/js/compiled/test.js"
-                    :output-dir    "resources/public/js/compiled/test/out"
-                    :optimizations :none}}
-    ]}
+                    :pretty-print    false}}]}
   )

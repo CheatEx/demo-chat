@@ -12,6 +12,9 @@ Chat:
     ✔ Send history on join @s @done (19-08-07 12:49)
   ✔ Heroku run @done (19-08-07 19:22)
   ☐ CI @?
+    ✔ Setup @done (19-08-08 11:12)
+    ☐ Some test
+    ☐ Check failure
   ☐ Database
     ☐ Options
     ☐ Code
