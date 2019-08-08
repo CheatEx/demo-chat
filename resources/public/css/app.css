@@ -102,20 +102,10 @@ div:hover {
 /**********************************/
 .history-item {
     flex-direction: row;
-    align-self: flex-end;
-}
-
-.history-item_own {
-    flex-direction: row-reverse;
-    align-self: flex-start;
 }
 
 .history-item__separator {
     margin: 0px 0px 0px 6px;
-}
-
-.history-item_own .history-item__separator {
-    margin: 0px 6px 0px 0px;
 }
 
 

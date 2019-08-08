@@ -22,9 +22,9 @@
 (defn history-item [msg]
   [:div.history-item
    {:class (when (::subs/own msg) "history-item_own")}
-   [:span (::db/text msg)]
+   [user-label (::db/from msg) (::subs/own msg)]
    [:span.history-item__separator ":"]
-   [user-label (::db/from msg) (::subs/own msg)]])
+   [:span (::db/text msg)]])
 
 (defn history [history]
   [:div.history
