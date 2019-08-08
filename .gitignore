@@ -6,3 +6,4 @@ out
 .rebel_readline_history
 .nrepl-port
 .lein-failures
+.lein-env

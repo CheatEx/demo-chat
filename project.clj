@@ -8,7 +8,8 @@
                  [yogthos/config "1.1.2"]
                  [ring "1.7.1"]
                  [http-kit "2.3.0"]
-                 [pneumatic-tubes "0.3.0"]]
+                 [pneumatic-tubes "0.3.0"]
+                 [com.taoensso/carmine "2.19.1"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]]
 

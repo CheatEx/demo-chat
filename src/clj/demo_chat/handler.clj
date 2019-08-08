@@ -7,15 +7,13 @@
             [pneumatic-tubes.httpkit :refer [websocket-handler]]
             
             [demo-chat.room :as room]
+            [demo-chat.redis :as redis]
             [demo-chat.events :as events]))
 
 (def tx (transmitter))
 (def dispatch-to (partial dispatch tx))
 
-(defonce chat
-  (room/create-room (reify room/Store
-                      (room/save! [this message] nil)
-                      (room/load-history! [this] []))))
+(defonce chat (room/create-room redis/store))
 
 (def rx
   (receiver
