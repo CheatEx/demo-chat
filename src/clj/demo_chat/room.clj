@@ -2,7 +2,13 @@
   (:refer-clojure :exclude [send])
   (:require [demo-chat.events :as events]))
 
-(defn create-room [] (atom {::receivers {} ::history []}))
+(defprotocol Store
+  (load-history! [this])
+  (save! [this message]))
+
+(defn create-room [store]
+  (let [history (load-history! store)]
+    (atom {::store store ::receivers {} ::history history})))
 
 (defn- join [room id receiver]
   (assoc-in room [::receivers id] receiver))
@@ -24,5 +30,6 @@
 
 (defn send! [room message]
   (swap! room send message)
+  (save! (::store @room) message)
   (doseq [kv (::receivers @room)]
     ((second kv) [::events/received message])))

@@ -6,6 +6,16 @@ A simple chat application.
 
 ## Development
 
+### Configuration
+
+The application only expects the `redis-url` parameter set.
+
+The simplest way to set it is by creating `.lein-env` file and write there
+
+```
+{:redis-url "<your redis server>"}
+```
+
 ### VSCode
 
 I've used VS Code and Calva plugin for development. Just instal them, open project folder and use "Calva Jack in" command.
@@ -18,21 +28,9 @@ $ lein figwheel dev
 
 ### Run tests:
 
-Install karma and headless chrome
-
 ```
-npm install -g karma-cli
-npm install karma karma-cljs-test karma-chrome-launcher --save-dev
+$ lein test
 ```
-
-And then run your tests
-
-```
-lein clean
-lein doo chrome-headless test once
-```
-
-Please note that [doo](https://github.com/bensu/doo) can be configured to run cljs.test in many JS environments (phantom, chrome, ie, safari, opera, slimer, node, rhino, or nashorn).
 
 ## Production Build
 
@@ -43,16 +41,12 @@ $ lein with-profile prod uberjar
 
 That should compile the clojurescript code first, and then create the standalone jar.
 
-The jar coul be run by `java -jar target/demo-chat.jar`. When you run the jar you can set the port the  server will use by setting the environment variable PORT. If it's not set, it will run on port 3000 by default.
-
-To deploy to heroku, first create your app:
-
+The jar coul be run by 
 ```
-heroku create
+$ java -jar target/demo-chat.jar
 ```
 
-Then deploy the application:
+It takes the following settings from the environment:
 
-```
-git push heroku master
-```
+* `PORT` web server port. Defaults to 3000
+* `REDIS_URL` redis server URL. Defaults to "redis://localhost:6379/"

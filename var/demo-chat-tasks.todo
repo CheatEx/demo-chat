@@ -13,9 +13,10 @@ Chat:
   ✔ Heroku run @done (19-08-07 19:22)
   ☐ CI @?
     ✔ Setup @done (19-08-08 11:12)
-    ☐ Some test
-    ☐ Check failure
+    ✔ Some test @done (19-08-08 12:41)
+    ✔ Check failure @done (19-08-08 12:41)
+    ☐ Test summary for Circle
   ☐ Database
-    ☐ Options
+    ✔ Options @done (19-08-08 12:41)
     ☐ Code
     ☐ Heroku support

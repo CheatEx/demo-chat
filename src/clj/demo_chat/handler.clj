@@ -12,7 +12,10 @@
 (def tx (transmitter))
 (def dispatch-to (partial dispatch tx))
 
-(defonce chat (room/create-room))
+(defonce chat
+  (room/create-room (reify room/Store
+                      (room/save! [this message] nil)
+                      (room/load-history! [this] []))))
 
 (def rx
   (receiver
