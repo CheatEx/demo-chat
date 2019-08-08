@@ -27,10 +27,22 @@
    [:span (::db/text msg)]])
 
 (defn history [history]
-  [:div.history
-   (map-indexed
-    (fn [idx msg] ^{:key idx} [history-item msg])
-    history)])
+  (let [!ref (atom nil)]
+    (ra/create-class
+     {:display-name "history"
+      
+      :component-did-update
+      (fn []
+        (when @!ref
+          (set! (.-scrollTop @!ref) (.-scrollHeight @!ref))))
+      
+      :reagent-render
+      (fn [history]
+        [:div.history {:ref (fn [com] (reset! !ref com))}
+         (map-indexed
+          (fn [idx msg] ^{:key idx} [history-item msg])
+          history)])
+      })))
 
 (defn message-input []
   (let [text (ra/atom "")

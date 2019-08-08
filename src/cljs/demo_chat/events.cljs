@@ -1,5 +1,6 @@
 (ns demo-chat.events
   (:require
+   [clojure.string :as str]
    [re-frame.core :as rf]
    [pneumatic-tubes.core :as tubes]
    [demo-chat.db :as db]))
@@ -15,8 +16,10 @@
 
 (rf/reg-event-fx ::send-message
                  (fn [cofx [_ text]]
-                   (let [message (db/make-message (get-in cofx [:db ::db/user]) text)]
-                     {:ws [::send message]})))
+                   (if-not (str/blank? text)
+                     (let [message (db/make-message (get-in cofx [:db ::db/user]) text)]
+                       {:ws [::send message]})
+                     {})))
 
 (rf/reg-event-db ::received
                  (fn [db [_ message]]

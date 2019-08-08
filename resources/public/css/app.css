@@ -96,6 +96,8 @@ div:hover {
 /**********************************/
 .history {
     flex-direction: column;
+    overflow-y: auto;
+    max-height: 80vh;
 }
 
 
