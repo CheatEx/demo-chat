@@ -11,8 +11,9 @@
                  [pneumatic-tubes "0.3.0"]
                  [com.taoensso/carmine "2.19.1"]]
 
-  :plugins [[lein-cljsbuild "1.1.7"]]
-
+  :plugins [[lein-cljsbuild "1.1.7"]
+            [jonase/eastwood "0.3.5"]]
+  
   :min-lein-version "2.7.1"
 
   :source-paths ["src/clj" "src/cljc"]

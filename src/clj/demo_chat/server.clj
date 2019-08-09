@@ -5,5 +5,5 @@
   (:gen-class))
 
  (defn -main [& args]
-   (let [port (Integer. (or (env :port) 3000))]
+   (let [port (or (env :port) 3000)]
      (run-server handler {:port port :join? false})))

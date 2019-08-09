@@ -13,23 +13,23 @@
 (def tx (transmitter))
 (def dispatch-to (partial dispatch tx))
 
-(defonce chat (room/create-room redis/store))
+(defonce chat (delay (room/create-room redis/store)))
 
 (def rx
   (receiver
    {::events/join
     (fn [tube [_ user]]
-      (room/join! chat user (fn [evt] (dispatch tx tube evt)))
+      (room/join! @chat user (fn [evt] (dispatch tx tube evt)))
       (assoc tube ::user user))
     
     ::events/send
     (fn [tube [_ message]]
-      (room/send! chat message)
+      (room/send! @chat message)
       tube)
     
     :tube/on-destroy
     (fn [tube _]
-      (room/leave! chat (::user tube))
+      (room/leave! @chat (::user tube))
       tube)}))
 
 (def ws-handler (websocket-handler rx))
@@ -39,6 +39,6 @@
   (GET "/chat" [] ws-handler)
   (resources "/"))
 
-(def dev-handler (-> #'routes wrap-reload))
+(def dev-handler (wrap-reload #'routes))
 
 (def handler routes)

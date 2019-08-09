@@ -16,7 +16,10 @@ Chat:
     ✔ Some test @done (19-08-08 12:41)
     ✔ Check failure @done (19-08-08 12:41)
     ☐ Test summary for Circle
-  ☐ Database
+    ✔ Linter @? @done (19-08-09 11:00)
+  ✔ Database @done (19-08-09 11:00)
     ✔ Options @done (19-08-08 12:41)
-    ☐ Code
-    ☐ Heroku support
+    ✔ Code @done (19-08-09 10:27)
+    ✔ Heroku support @done (19-08-09 10:27)
+  ☐ var
+    ☐ Connection status
