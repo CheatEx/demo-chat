@@ -3,7 +3,6 @@
    [reagent.core :as ra]
    [re-frame.core :as rf]
    [demo-chat.events :as events]
-   [demo-chat.effects :as effects]
    [demo-chat.views :as views]
    [demo-chat.config :as config]))
 
@@ -19,5 +18,6 @@
 
 (defn ^:export init []
   (rf/dispatch-sync [::events/initialize-db])
+  (rf/dispatch-sync [::events/connect])
   (dev-setup)
   (mount-root))

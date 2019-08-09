@@ -1,4 +1,4 @@
-(ns demo-chat.effects
+(ns demo-chat.websocket
   (:require
    [re-frame.core :as rf]
    [pneumatic-tubes.core :as tubes]
@@ -21,7 +21,7 @@
 (def tube (tubes/tube ws-url on-receive))
 
 (rf/reg-fx :ws
-           (fn [data]
-             (tubes/dispatch tube data)))
-
-(tubes/create! tube)
+           (fn [[operation & data]]
+             (case operation
+               ::transfer (tubes/dispatch tube data)
+               ::open (tubes/create! tube))))
