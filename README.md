@@ -32,6 +32,12 @@ $ lein figwheel dev
 $ lein test
 ```
 
+### Infrastructure
+
+[Circle CI](https://circleci.com/gh/CheatEx/demo-chat/). I've only managed to fail build on test failures. Compatible result reporters didn't work under my version of lein.
+
+Eastwood is also running there.
+
 ## Production Build
 
 ```
@@ -41,7 +47,7 @@ $ lein with-profile prod uberjar
 
 That should compile the clojurescript code first, and then create the standalone jar.
 
-The jar coul be run by 
+The jar could be run by
 ```
 $ java -jar target/demo-chat.jar
 ```
@@ -50,3 +56,18 @@ It takes the following settings from the environment:
 
 * `PORT` web server port. Defaults to 3000
 * `REDIS_URL` redis server URL. Defaults to "redis://localhost:6379/"
+
+For example
+```
+$ PORT=4200 REDIS_URL='redis://172.17.0.2:6379/' java -jar target/demo-chat.jar
+```
+
+### Heroku
+
+To run the app on Heroku you'll need to enable Redis addon. The simplest way is by Heroku CLI
+
+```
+heroku addons:create heroku-redis:hobby-dev -a <application name> --wait
+```
+
+Consult [documentation](https://devcenter.heroku.com/articles/managing-add-ons) for more options.

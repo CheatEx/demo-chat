@@ -28,7 +28,7 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "project.clj" }}
 
-      - run: lein do test, with-profile prod uberjar
+      - run: lein do eastwood, test, with-profile prod uberjar
 
       - store_artifacts:
           path: target/demo-chat.jar
