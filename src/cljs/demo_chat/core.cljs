@@ -3,6 +3,7 @@
    [reagent.core :as ra]
    [re-frame.core :as rf]
    [demo-chat.events :as events]
+   [demo-chat.websocket :as ws] ; Activate ws effect
    [demo-chat.views :as views]
    [demo-chat.config :as config]))
 
