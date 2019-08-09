@@ -71,3 +71,10 @@ heroku addons:create heroku-redis:hobby-dev -a <application name> --wait
 ```
 
 Consult [documentation](https://devcenter.heroku.com/articles/managing-add-ons) for more options.
+
+## Area for improvements
+
+* Proper test results in Circle
+* Connectivity status on client
+* Server logging
+* Strategy for DB failure on server
