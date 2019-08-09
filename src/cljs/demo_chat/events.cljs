@@ -3,8 +3,7 @@
    [clojure.string :as str]
    [re-frame.core :as rf]
    [pneumatic-tubes.core :as tubes]
-   [demo-chat.db :as db]
-   [demo-chat.websocket :as ws]))
+   [demo-chat.db :as db]))
 
 (rf/reg-event-db ::initialize-db
                  (fn [_ _]
@@ -13,17 +12,17 @@
 (rf/reg-event-fx ::logged-in
                  (fn [cofx [_ user]]
                    {:db (assoc (:db cofx) ::db/user user)
-                    :ws [::ws/transfer ::join user]}))
+                    :ws [:ws/transfer ::join user]}))
 
 (rf/reg-event-fx ::connect
                  (fn [cofx _]
-                   {:ws [::ws/open]}))
+                   {:ws [:ws/open]}))
 
 (rf/reg-event-fx ::send-message
                  (fn [cofx [_ text]]
                    (if-not (str/blank? text)
                      (let [message (db/make-message (get-in cofx [:db ::db/user]) text)]
-                       {:ws [::ws/transfer ::send message]})
+                       {:ws [:ws/transfer ::send message]})
                      {})))
 
 (rf/reg-event-db ::connected

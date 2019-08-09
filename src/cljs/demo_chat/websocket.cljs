@@ -19,15 +19,15 @@
   (rf/dispatch event-v))
 
 (defn on-connect []
-  (rf/dispatch-sync [::events/connected true]))
+  (rf/dispatch-sync [::demo-chat.events/connected true]))
 
 (defn on-disconnect []
-  (rf/dispatch-sync [::events/connected false]))
+  (rf/dispatch-sync [::demo-chat.events/connected false]))
 
 (def tube (tubes/tube ws-url on-receive on-connect on-disconnect (fn []) {}))
 
 (rf/reg-fx :ws
            (fn [[operation & data]]
              (case operation
-               ::transfer (tubes/dispatch tube data)
-               ::open (tubes/create! tube))))
+               :ws/transfer (tubes/dispatch tube data)
+               :ws/open (tubes/create! tube))))
