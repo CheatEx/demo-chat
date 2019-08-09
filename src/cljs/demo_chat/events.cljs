@@ -26,6 +26,10 @@
                        {:ws [::ws/transfer ::send message]})
                      {})))
 
+(rf/reg-event-db ::connected
+                 (fn [db [_ value]]
+                   (assoc db ::db/connected value)))
+
 (rf/reg-event-db ::received
                  (fn [db [_ message]]
                    (update db ::db/history conj message)))
