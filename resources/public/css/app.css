@@ -84,14 +84,37 @@ div:hover {
     max-width: 600px;
 }
 
-.chat__header {
-    flex-direction: row-reverse;
-    margin: 6px 0px 12px 0px;
-}
-
 .chat__body {
     flex-direction: column;
 }
+
+
+/**********************************/
+.chat-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6px 0px 12px 0px;
+}
+
+
+/**********************************/
+.status-icon {
+    align-items: center;
+}
+
+.status-icon__light {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+
+    background-color: lightpink;
+}
+
+.status-icon_connected .status-icon__light {
+    background-color: lightgreen;
+}
+
 
 /**********************************/
 .history {

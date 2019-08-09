@@ -13,3 +13,7 @@
 (rf/reg-sub
  ::user
  (fn [db] (::db/user db)))
+
+(rf/reg-sub
+ ::connected
+ (fn [db] (::db/connected db)))

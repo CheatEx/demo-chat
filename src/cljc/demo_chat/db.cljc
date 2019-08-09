@@ -7,7 +7,8 @@
               {::text "Wanna do some clojure?" ::from "0"}
               {::text "OMG not again!!!1111" ::from "1"}]})
 
-(def initial-db {::history []})
+(def initial-db {::history []
+                 ::connected false})
 
 (defn make-message [user text]
   {::text text ::from user})

@@ -60,10 +60,18 @@
              {:on-click (fn [e] (on-send))}
              [:span "Send"]]])))
 
+(defn status-icon []
+  (let [connected (rf/subscribe [::subs/connected])]
+    [:div.status-icon {:class (when @connected "status-icon_connected")}
+     [:div.status-icon__light {:title (if @connected "Connected" "Disconnected")}]]))
+
+(defn chat-header []
+  [:div.chat-header [status-icon] [active-user]])
+
 (defn chat []
   (let [hs (rf/subscribe [::subs/history])]
     [:div.chat 
-     [:div.chat__header [active-user]]
+     [chat-header]
      [:div.chat__body
       [history @hs] [message-input]]]))
 
